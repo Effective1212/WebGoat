@@ -9,6 +9,7 @@ RUN \
 
 USER webgoat
 
+RUN ls -la 
 COPY --chown=webgoat target/webgoat-*.jar /home/webgoat/webgoat.jar
 
 EXPOSE 8080
