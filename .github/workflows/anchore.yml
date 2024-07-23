@@ -22,6 +22,7 @@ permissions:
   contents: read
 
 jobs:
+  needs: build
   Anchore-Build-Scan:
     permissions:
       contents: read # for actions/checkout to fetch code
