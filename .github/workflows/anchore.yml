@@ -11,18 +11,24 @@
 # https://github.com/anchore/grype
 name: Anchore Grype vulnerability scan
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+#on:
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "main" ]
+#    branches: [ "main" ]
+
+on:
+  workflow_run:
+    workflows: ["Main / Pull requests build"]
+    branches: [main]
+    types: 
+      - completed
 
 permissions:
   contents: read
 
 jobs:
-  needs: build
   Anchore-Build-Scan:
     permissions:
       contents: read # for actions/checkout to fetch code
