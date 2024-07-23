@@ -45,13 +45,13 @@ jobs:
       steps:
       - name: Check out the code
         uses: actions/checkout@v4
-      - name: Build the Docker image
-        run: ls -l && docker build . --file Dockerfile --tag localbuild/testimage:latest
+      - name: Pull the Docker image
+        run: docker pull webgoat/webgoat
       - name: Run the Anchore Grype scan action
         uses: anchore/scan-action@d5aa5b6cb9414b0c7771438046ff5bcfa2854ed7
         id: scan
         with:
-          image: "localbuild/testimage:latest"
+          image: "webgoat/webgoat"
           fail-build: true
           severity-cutoff: critical
       - name: Upload vulnerability report
