@@ -21,7 +21,6 @@ name: My Grype vulnerability scan
 on:
   workflow_run:
     workflows: ["Main / Pull requests build"]
-    branches: [main]
     types: 
       - completed
 
